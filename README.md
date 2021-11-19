@@ -1,105 +1,96 @@
+# nx12to13
+
+https://github.com/nrwl/nx/issues/7807
 
 
-# Nx12to13
+commands
+```
+npx create-nx-workspace@12.0.0
+nx migrate 13.2.0
+npm install
+nx migrate --run-migrations
+```
 
-This project was generated using [Nx](https://nx.dev).
+Error
+```
+>  NX  Running migrations from 'migrations.json'
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+Running migration add-target-dependencies
 
-🔎 **Powerful, Extensible Dev Tools**
+>  NX   NOTE  Target dependencies have been updated in nx.json
 
-## Quick Start & Documentation
+  Nx has deprecated strictlyOrderedTargets in favour of targetDependencies.
+  Based on your configuration the migration has configured targetDependencies for the following targets: build.
+  Read more here: https://nx.dev/core-concepts/configuration
 
-[Nx Documentation](https://nx.dev/angular)
+Successfully finished add-target-dependencies
+---------------------------------------------------------
+Running migration set-default-base-if-not-set
+Successfully finished set-default-base-if-not-set
+---------------------------------------------------------
+Running migration 13-0-0-config-locations
+Successfully finished 13-0-0-config-locations
+---------------------------------------------------------
+Running migration set-parallel-default
+Successfully finished set-parallel-default
+---------------------------------------------------------
+Running migration update-webpack-browser-config
+Successfully finished update-webpack-browser-config
+---------------------------------------------------------
+Running migration update-storybook
+Successfully finished update-storybook
+---------------------------------------------------------
+Running migration update-angular-eslint-rules
+Successfully finished update-angular-eslint-rules
+---------------------------------------------------------
+Running migration convert-webpack-browser-build-target-to-delegate-build
+Successfully finished convert-webpack-browser-build-target-to-delegate-build
+---------------------------------------------------------
+Running migration update-invalid-import-paths
+Successfully finished update-invalid-import-paths
+---------------------------------------------------------
+Running migration add-postcss-packages
+Successfully finished add-postcss-packages
+---------------------------------------------------------
+Running migration update-angular-config
+Successfully finished update-angular-config
+---------------------------------------------------------
+Running migration update-libraries
+Successfully finished update-libraries
+---------------------------------------------------------
+Running migration update-angular-jest-config
+Successfully finished update-angular-jest-config
+---------------------------------------------------------
+Running migration update-testing-imports
+Successfully finished update-testing-imports
+---------------------------------------------------------
+Running migration schematic-options-13
+Cannot find module '@angular-devkit/core'
+Require stack:
+- ~\AppData\Local\Temp\tmp-24140-14Bhrtd0OOQg\node_modules\@nrwl\tao\src\commands\ngcli-adapter.js
+- ~\AppData\Local\Temp\tmp-24140-14Bhrtd0OOQg\node_modules\@nrwl\tao\src\commands\migrate.js
+- ~\AppData\Local\Temp\tmp-24140-14Bhrtd0OOQg\node_modules\@nrwl\tao\index.js
+~\nx12to13\node_modules\yargs\build\lib\yargs.js:1132
+                throw err;
+                ^
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+Error: Command failed: ~\AppData\Local\Temp\tmp-24140-14Bhrtd0OOQg\node_modules\.bin\tao migrate --run-migrations
+    at checkExecSyncError (child_process.js:790:11)
+    at execSync (child_process.js:863:15)
+    at Object.handler (~\nx12to13\node_modules\@nrwl\workspace\src\command-line\nx-commands.js:125:42)
+    at Object.runCommand (~\nx12to13\node_modules\yargs\build\lib\command.js:196:48)
+    at Object.parseArgs [as _parseArgs] (~\nx12to13\node_modules\yargs\build\lib\yargs.js:1043:55)
+    at Object.get [as argv] (~\nx12to13\node_modules\yargs\build\lib\yargs.js:986:25)
+    at initLocal (~\nx12to13\node_modules\@nrwl\cli\lib\init-local.js:28:79)
+    at Object.<anonymous> (~\nx12to13\node_modules\@nrwl\cli\bin\nx.js:43:32)
+    at Module._compile (internal/modules/cjs/loader.js:1085:14)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 10076,
+  stdout: null,
+  stderr: null
+}
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@nx12to13/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+```
